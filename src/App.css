@@ -2,6 +2,13 @@
   text-align: center;
 }
 
+.complete {
+  text-decoration: line-through;
+}
+.not-complete{
+  text-decoration: none;
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;
