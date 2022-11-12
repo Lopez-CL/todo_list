@@ -11,8 +11,10 @@ const Form = (props) => {
         let taskObject = {
             content: task,
             status: false
+            // if I wanted to add id   markedDelete: false, // markedDelete will be initialized in every todo as false  We need a unique id for each to item. This is a common javascript way to generate a random, unique number. id: Math.floor(Math.random() * 100000000).toString(),
         }
-        setList([...list, taskObject]);
+        setList([...list, taskObject])
+        localStorage.setItem("todos", JSON.stringify([...list]));
         setTask('')
     };
     return (

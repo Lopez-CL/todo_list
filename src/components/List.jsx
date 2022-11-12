@@ -17,8 +17,6 @@ const List = (props) => {
             }
         });
         setList(updateStatus);
-        // todo.status = !todo.status;
-        // setList([...list]);
     };
     const style = (status) =>{
         if(status === true){
@@ -27,14 +25,24 @@ const List = (props) => {
             return "not-complete";
         }
     }
+    // delete function
+    const handleDelete = (idx) =>{
+        const deleteTodo = list.filter((todo, index)=>{
+            return idx !== index;
+        })
+        setList(deleteTodo);
+    }
     // const handleUpdate
-    // const handleDelete
+
     return (
         <div>
             {list.map((todo,index) =>(
-                <div className={style(todo.status)} key={index}>
-                <p>{todo.content}</p>
-                <input type='checkbox' onChange= {(e)=> handleChecked(todo)} />
+                <div key={index}>
+                    <label className={style(todo.status)} htmlFor='task'>{todo.content}</label>
+                    <input id='task' type='checkbox' onChange= {(e)=> handleChecked(todo)} />
+                    <div>
+                        <button onClick={(e) => handleDelete(index)} className='btn btn-danger'>Remove Task</button>
+                    </div>
                 </div>
             ))}
         </div>
