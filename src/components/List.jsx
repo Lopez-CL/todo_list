@@ -17,6 +17,7 @@ const List = (props) => {
             }
         });
         setList(updateStatus);
+        localStorage.setItem("todos", JSON.stringify(updateStatus));
     };
     const style = (status) =>{
         if(status === true){
@@ -27,11 +28,12 @@ const List = (props) => {
     }
     // delete function
     const handleDelete = (idx) =>{
-        const deleteTodo = list.filter((todo, index)=>{
+        const filterTodos = list.filter((todo, index)=>{
             return idx !== index;
         })
-        setList(deleteTodo);
-    }
+        setList(filterTodos);
+        localStorage.setItem("todos", JSON.stringify(filterTodos));
+    };
     // const handleUpdate
 
     return (

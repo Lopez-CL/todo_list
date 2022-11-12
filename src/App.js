@@ -5,8 +5,15 @@ import Form from './components/Form';
 
 function App() {
   const [list, setList] = useState([]);
-
-  localStorage.clear();
+  const getTodos = JSON.parse(localStorage.getItem("todos"));
+  useEffect(() => {
+    if(getTodos === null){
+      setList([]);
+    }else{
+      setList(getTodos);
+    }
+    console.log(getTodos);
+  },[]);
   return (
     <div className="App">
       <div>
